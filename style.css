@@ -90,7 +90,7 @@ nav {
 .hamburger { width: 18px; height: 12px; display: flex; flex-direction: column; justify-content: space-between; }
 .hamburger span { display: block; width: 100%; height: 2px; background-color: var(--text-main); transition: 0.3s; }
 
-/* هيرو سنتر */
+/* Hero Center Banner Section Styles */
 .hero {
   height: 65vh; position: relative; display: flex; justify-content: center; align-items: center; text-align: center;
   background: url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
@@ -104,7 +104,7 @@ nav {
 }
 .hero-btn:hover { background: transparent; color: var(--text-main); }
 
-/* المنتجات والفلاتر */
+/* Products Section Matrix and Archive Filters */
 .products-section { padding: 60px 4%; }
 .container { max-width: 1300px; margin: 0 auto; }
 .section-title { font-size: 18px; font-weight: 800; letter-spacing: 4px; text-align: center; margin-bottom: 40px; text-transform: uppercase; }
@@ -137,7 +137,7 @@ nav {
 }
 .btn:hover { background: transparent; color: var(--text-main); }
 
-/* السياسات واللمسات الإضافية */
+/* About and Identity Statement Section Layout */
 .about-section { padding: 50px 4%; background-color: var(--bg-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
 .about-container { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 40px; }
 .about-text { flex: 1; }
@@ -146,6 +146,7 @@ nav {
 .about-image-wrapper { flex: 1; height: 300px; overflow: hidden; }
 .about-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
+/* Policies Section Layout Grid */
 .policy-section { padding: 60px 4%; }
 .policy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto; }
 .policy-box { border: 1px solid var(--border-color); padding: 25px; background-color: var(--bg-card); text-align: center; }
@@ -159,7 +160,7 @@ nav {
 .whatsapp-direct-btn { background: #00cd52; border-color: #00cd52; color: #fff; }
 .whatsapp-direct-btn:hover { color: #00cd52; }
 
-/* 🛍️ ستايل السلة المتطور والمصلح بالكامل 🛍️ */
+/* Shopping Cart Drawer Matrix Stylesheet Layout */
 .cart-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s;
 }
@@ -177,7 +178,7 @@ nav {
 .cart-items-body { flex-grow: 1; overflow-y: auto; padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
 .empty-cart-msg { text-align:center; color:#777; padding:40px 0; font-weight:600; font-size:12px; letter-spacing:1px; }
 
-/* عناصر المنتجات بريميوم كارد داخل السلة */
+/* Premium Cart Items Core Elements styling cards */
 .cart-premium-item {
   display: flex; gap: 16px; background: var(--bg-card); border: 1px solid var(--border-color); padding: 14px; border-radius: 4px; align-items: center;
 }
@@ -205,9 +206,9 @@ nav {
 .light-theme .item-qty-widget button:hover { background: rgba(0,0,0,0.04); }
 .item-qty-widget span { font-size: 11px; font-weight: 700; width: 26px; text-align: center; }
 
-/* لوحة التجميعة المالية والبيانات المحدثة */
+/* Financial Metadata Tab Panels Input Controls */
 .cart-summary-panel { padding: 20px 24px; background: transparent; display: flex; flex-direction: column; height: 100%; overflow-y: auto; }
-.customer-info-inputs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; text-align: right; direction: rtl; }
+.customer-info-inputs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
 .customer-info-inputs input, .customer-info-inputs textarea {
   width: 100%; background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 10px; font-size: 11px; font-family: var(--font-base); outline: none; border-radius: 3px;
 }
@@ -221,7 +222,7 @@ nav {
 .coupon-area { display: flex; gap: 6px; margin-top: 10px; }
 .coupon-area input { flex-grow: 1; background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); padding: 6px; font-size: 11px; font-family: var(--font-base); outline: none; }
 .coupon-area button { background: transparent; border: 1px solid var(--text-main); color: var(--text-main); padding: 0 12px; font-size: 11px; font-weight: 700; cursor: pointer; }
-.coupon-feedback { font-size: 11px; margin-top: 4px; text-align: right; }
+.coupon-feedback { font-size: 11px; margin-top: 4px; }
 
 .summary-divider { border: 0; border-top: 1px solid var(--border-color); margin: 12px 0; }
 .bill-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
@@ -243,9 +244,8 @@ footer { border-top: 1px solid var(--border-color); padding: 40px 4% 20px 4%; ba
   max-width: 1300px; margin: 30px auto 0 auto; border-top: 1px solid var(--border-color); padding-top: 15px; display: flex; justify-content: space-between; font-size: 10px; color: var(--text-muted);
 }
 
-/* ==========================================================================
-   ➕ ستايلات العزل والتحكم في تابات السلة (احترافية وآمنة)
-   ========================================================================== */
+/* 
+   ➕ Cart Modular Tabs Switching State Engine View Styles*/
 .cart-tabs-nav {
   display: flex;
   gap: 8px;
