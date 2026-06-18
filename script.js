@@ -55,7 +55,7 @@ function filterProducts(category, buttonContext) {
 let globalCartState = [];
 let promoCodeActivated = false;
 
-// تحديث الفتح ليبدأ دائماً من خطوة المنتجات الأولى
+// Cart drawer state open modifier (always defaults to items list view step)
 function openCart() {
   document.getElementById("cartDrawer").classList.add("open");
   document.getElementById("cartOverlay").classList.add("open");
@@ -67,7 +67,7 @@ function closeCart() {
   document.getElementById("cartOverlay").classList.remove("open");
 }
 
-// دالة التنقل التبادلي بين خطوات تابات السلة (المنتجات / الفورم)
+// Custom multi-tier steps state toggle drawer panel control
 function switchCartStep(stepNumber) {
   const step1 = document.getElementById("cartStep1");
   const step2 = document.getElementById("cartStep2");
@@ -83,7 +83,7 @@ function switchCartStep(stepNumber) {
     if (tabBtn2) tabBtn2.classList.remove("active");
   } else {
     if (globalCartState.length === 0) {
-      alert("سلتك فارغة حالياً، أضف منتجات أولاً!");
+      alert("Your cart is currently empty. Please add items first!");
       return;
     }
     step1.classList.remove("active");
@@ -151,17 +151,17 @@ function applyDiscountCoupon() {
 
   if (input === "WESTYLE10") {
     promoCodeActivated = true;
-    feedback.innerText = "🎉 تم تطبيق خصم 10% بنجاح!";
+    feedback.innerText = "🎉 10% discount applied successfully!";
     feedback.style.color = "#00cd52";
   } else {
     promoCodeActivated = false;
-    feedback.innerText = "❌ كود الخصم غير صحيح";
+    feedback.innerText = "❌ Invalid discount code";
     feedback.style.color = "#ff3b30";
   }
   calculateCartTotals();
 }
 
-// دالة الحسابات الشاملة والمؤمنة من أخطاء عدم وجود العناصر في الـ DOM
+// Defensive financial logic computations matrix
 function calculateCartTotals() {
   let subtotal = 0;
   globalCartState.forEach(item => { 
@@ -189,11 +189,10 @@ function calculateCartTotals() {
 
   let finalGrandTotal = subtotal - discount + shippingFee;
 
-  // تحديث التوتال الفرعي للخطوة الأولى الخاصة بالمنتجات فقط
+  // Render subtotal states
   const step1SubtotalEl = document.getElementById("step1Subtotal");
   if (step1SubtotalEl) step1SubtotalEl.innerText = `${subtotal} LE`;
 
-  // تحديث قيم الفاتورة الكاملة في خطوة البيانات الثانية (إن وجدت)
   const billSubtotalEl = document.getElementById("billSubtotal");
   const billShippingEl = document.getElementById("billShipping");
   const billTotalEl = document.getElementById("billTotal");
@@ -221,7 +220,6 @@ function refreshCartInterface() {
   globalCartState.forEach(item => {
     totalQty += item.quantity;
     
-    // كود بناء الكارت بالهيكل المطور لتكبير مساحة العرض والصورة بالتساوي
     container.innerHTML += `
       <div class="cart-premium-item">
         <div class="cart-item-img-wrapper">
@@ -255,18 +253,18 @@ function refreshCartInterface() {
 
 function executeWhatsAppCheckout() {
   if (globalCartState.length === 0) {
-    alert("السلة فارغة!");
+    alert("Your cart is empty!");
     return;
   }
 
   const name = document.getElementById("custName").value.trim();
   const phone = document.getElementById("custPhone").value.trim();
   const address = document.getElementById("custAddress").value.trim();
-  const notes = document.getElementById("custNotes").value.trim() || "لا يوجد";
+  const notes = document.getElementById("custNotes").value.trim() || "None";
   const pMethod = document.getElementById("paymentMethod").value;
 
   if (!name || !phone || !address) {
-    alert("برجاء ملء جميع الحقول الإجبارية (*)");
+    alert("Please fill in all mandatory fields (*)");
     return;
   }
 
@@ -274,16 +272,16 @@ function executeWhatsAppCheckout() {
   const shippingLabel = selector.options[selector.selectedIndex].text;
   const shippingFee = parseInt(selector.options[selector.selectedIndex].getAttribute('data-fee')) || 0;
   
-  let msg = `🔥 طلب شراء جديد من براند westyle 🔥%0A%0A`;
-  msg += `👤 بيانات العميل:%0A`;
+  let msg = `🔥 NEW ORDER ARRIVED | westyle BRAND 🔥%0A%0A`;
+  msg += `👤 CLIENT METADATA:%0A`;
   msg += `-----------------------------%0A`;
-  msg += `📝 الاسم: ${name}%0A`;
-  msg += `📞 الفون: ${phone}%0A`;
-  msg += `📍 العنوان: ${address}%0A`;
-  msg += `💳 الدفع عن طريق: ${pMethod}%0A`;
-  msg += `✉️ ملاحظات: ${notes}%0A%0A`;
+  msg += `📝 Full Name: ${name}%0A`;
+  msg += `📞 Mobile Phone: ${phone}%0A`;
+  msg += `📍 Shipping Address: ${address}%0A`;
+  msg += `💳 Method of Payment: ${pMethod}%0A`;
+  msg += `✉️ Customer Notes: ${notes}%0A%0A`;
   
-  msg += `🛒 المنتجات المطلوبة:%0A`;
+  msg += `🛒 ORDER MANIFEST ITEMS:%0A`;
   msg += `-----------------------------%0A`;
   
   let subtotal = 0;
@@ -291,20 +289,20 @@ function executeWhatsAppCheckout() {
     const itemTotal = item.price * item.quantity;
     subtotal += itemTotal;
     msg += `${i+1}. ${item.name}%0A`;
-    msg += `   [المقاس: ${item.size} | اللون: ${item.color}]%0A`;
-    msg += `   الكمية: ${item.quantity} × السعر: ${item.price} LE -> الإجمالي: ${itemTotal} LE%0A%0A`;
+    msg += `   [Size: ${item.size} | Color: ${item.color}]%0A`;
+    msg += `   Qty: ${item.quantity} × Price: ${item.price} LE -> Item Total: ${itemTotal} LE%0A%0A`;
   });
   
   let discount = promoCodeActivated ? (subtotal * 0.10) : 0;
   let finalTotal = subtotal - discount + shippingFee;
 
   msg += `-----------------------------%0A`;
-  msg += `💰 الحساب قبل الخصم: ${subtotal} LE%0A`;
+  msg += `💰 Order Subtotal: ${subtotal} LE%0A`;
   if (promoCodeActivated) {
-    msg += `🎟️ قيمة الخصم المطبق (10%): -${discount.toFixed(0)} LE%0A`;
+    msg += `🎟️ Active Coupon Discount (10%): -${discount.toFixed(0)} LE%0A`;
   }
-  msg += `🚚 مصاريف الشحن (${shippingLabel}): ${shippingFee} LE%0A`;
-  msg += `💵 صافي المبلغ المطلوب سداده: *${finalTotal} LE*%0A`;
+  msg += `🚚 Shipping Overhead (${shippingLabel}): ${shippingFee} LE%0A`;
+  msg += `💵 GRAND NET TOTAL DUE: *${finalTotal} LE*%0A`;
   
   window.open(`https://wa.me/201122176987?text=${msg}`, "_blank");
 }
