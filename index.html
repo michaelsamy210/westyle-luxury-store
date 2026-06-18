@@ -165,7 +165,7 @@
     <div class="about-container">
       <div class="about-text">
         <h2 class="about-title">THE IDENTITY</h2>
-        <p class="about-paragraph">براند <strong>westyle</strong> ليس مجرد خط أزياء عابر؛ إنها هوية بصرية هندسية معاصرة تمزج بين البساطة البصرية (Minimalism) وطاقة الشارع الحرة.</p>
+        <p class="about-paragraph">The <strong>westyle</strong> brand is not just a fleeting fashion line; it is a contemporary, geometric visual identity that seamlessly blends minimalism with free-spirited raw street energy.</p>
       </div>
       <div class="about-image-wrapper">
         <img src="https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&w=800&q=80" alt="Brand Identity Profile">
@@ -179,13 +179,13 @@
       <div class="policy-grid">
         <div class="policy-box">
           <div class="policy-icon">🚚</div>
-          <h3>آلية الشحن والتوصيل</h3>
-          <p>شحن سريع ومؤمن لجميع المحافظات المصرية خلال 2 إلى 5 أيام عمل.</p>
+          <h3>Shipping & Delivery</h3>
+          <p>Fast, secured nationwide delivery across all Egyptian governorates within 2 to 5 business days.</p>
         </div>
         <div class="policy-box">
           <div class="policy-icon">🔄</div>
-          <h3>الاستبدال والاسترجاع</h3>
-          <p>نمنح عملائنا حق الفحص والمعاينة الكاملة عند الاستلام.</p>
+          <h3>Returns & Exchanges</h3>
+          <p>We provide our clients full inspection and checking rights upon order arrival before final handover.</p>
         </div>
       </div>
     </div>
@@ -202,8 +202,8 @@
   <div class="cart-drawer" id="cartDrawer">
     <div class="cart-header">
       <div class="cart-tabs-nav">
-        <button type="button" class="tab-btn active" id="tabBtn1" onclick="switchCartStep(1)">01. المنتجات</button>
-        <button type="button" class="tab-btn" id="tabBtn2" onclick="switchCartStep(2)">02. البيانات</button>
+        <button type="button" class="tab-btn active" id="tabBtn1" onclick="switchCartStep(1)">01. Items</button>
+        <button type="button" class="tab-btn" id="tabBtn2" onclick="switchCartStep(2)">02. Details</button>
       </div>
       <button class="close-x" onclick="closeCart()">✕</button>
     </div>
@@ -215,45 +215,45 @@
           <span>Subtotal</span>
           <span id="step1Subtotal">0 LE</span>
         </div>
-        <button type="button" class="next-step-btn" onclick="switchCartStep(2)">التالي: إدخال البيانات ←</button>
+        <button type="button" class="next-step-btn" onclick="switchCartStep(2)">Next: Enter Information →</button>
       </div>
     </div>
 
     <div id="cartStep2" class="cart-step-content">
       <div class="cart-summary-panel">
         <div class="customer-info-inputs">
-          <input type="text" id="custName" placeholder="الاسم بالكامل *" required>
-          <input type="tel" id="custPhone" placeholder="رقم الموبايل للتواصل *" required>
-          <input type="text" id="custAddress" placeholder="العنوان بالتفصيل (المحافظة/الشارع) *" required>
-          <textarea id="custNotes" placeholder="ملاحظات إضافية على الطلب..." rows="2"></textarea>
+          <input type="text" id="custName" placeholder="Full Name *" required>
+          <input type="tel" id="custPhone" placeholder="Mobile Number *" required>
+          <input type="text" id="custAddress" placeholder="Full Address (Governorate/Street) *" required>
+          <textarea id="custNotes" placeholder="Additional order notes..." rows="2"></textarea>
         </div>
 
         <div class="summary-row-input">
-          <label>📍 الشحن إلى</label>
+          <label>📍 Ship To</label>
           <select id="shippingLocation" onchange="calculateCartTotals()">
-            <option value="cairo" data-fee="50">القاهرة (50 LE)</option>
-            <option value="giza" data-fee="50">الجيزة (50 LE)</option>
-            <option value="alex" data-fee="70">الإسكندرية (70 LE)</option>
-            <option value="delta" data-fee="80">الدلتا ووجه بحري (80 LE)</option>
-            <option value="upper" data-fee="100">الصعيد والقناة (100 LE)</option>
+            <option value="cairo" data-fee="50">Cairo (50 LE)</option>
+            <option value="giza" data-fee="50">Giza (50 LE)</option>
+            <option value="alex" data-fee="70">Alexandria (70 LE)</option>
+            <option value="delta" data-fee="80">Delta & Lower Egypt (80 LE)</option>
+            <option value="upper" data-fee="100">Upper Egypt & Canal (100 LE)</option>
           </select>
         </div>
 
         <div class="summary-row-input">
-          <label>💳 طريقة الدفع</label>
+          <label>💳 Payment Method</label>
           <select id="paymentMethod" onchange="handlePaymentMethodChange()">
-            <option value="Cash">كاش عند الاستلام</option>
-            <option value="InstaPay">إنستا باي (InstaPay)</option>
+            <option value="Cash">Cash on Delivery</option>
+            <option value="InstaPay">InstaPay</option>
           </select>
         </div>
 
-        <div id="instapayAlert" style="display: none; background: rgba(0,205,82,0.1); border: 1px dashed #00cd52; padding: 12px; margin-bottom: 15px; border-radius: 4px; font-size: 11px; color: #00cd52; text-align: right; direction: rtl; font-weight: 600;">
-          💡 يرجى تحويل المبلغ إلى عنوان InstaPay الخاص بنا بعد إرسال الطلب على الواتساب وتأكيده مع الإدارة.
+        <div id="instapayAlert" style="display: none; background: rgba(0,205,82,0.1); border: 1px dashed #00cd52; padding: 12px; margin-bottom: 15px; border-radius: 4px; font-size: 11px; color: #00cd52; text-align: left; font-weight: 600;">
+          💡 Please transfer the amount to our InstaPay address after sending the order on WhatsApp and confirming it with administration.
         </div>
 
         <div class="coupon-area">
-          <input type="text" id="couponInput" placeholder="كود الخصم (WESTYLE10)">
-          <button type="button" onclick="applyDiscountCoupon()">تطبيق</button>
+          <input type="text" id="couponInput" placeholder="Discount Code (WESTYLE10)">
+          <button type="button" onclick="applyDiscountCoupon()">Apply</button>
         </div>
         <p id="couponFeedback" class="coupon-feedback"></p>
 
@@ -265,8 +265,8 @@
         <div class="bill-row total-highlight"><span>Grand Total</span><span id="billTotal">0 LE</span></div>
 
         <div class="step2-navigation-buttons">
-          <button class="checkout-btn" onclick="executeWhatsAppCheckout()">تأكيد الطلب عبر الواتساب ⚡</button>
-          <button type="button" class="back-step-btn" onclick="switchCartStep(1)">← العودة للمنتجات</button>
+          <button class="checkout-btn" onclick="executeWhatsAppCheckout()">Confirm Order via WhatsApp ⚡</button>
+          <button type="button" class="back-step-btn" onclick="switchCartStep(1)">← Back to Items</button>
         </div>
       </div>
     </div>
